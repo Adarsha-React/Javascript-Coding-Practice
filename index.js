@@ -13,5 +13,7 @@ Array.prototype.myMap = function (callback) {
   return result;
 };
 
-const result = nums.myMap((item) => item * 3);
+const result = nums.myMap(function (item) {
+  return item * 3;
+});
 console.log(result);
