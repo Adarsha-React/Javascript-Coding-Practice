@@ -1,19 +1,19 @@
 const nums = [1, 2, 3, 4, 5, 6];
 
-const newArr = nums.map((item) => 2 * item);
+const newArr = nums.filter((item) => item > 3);
 console.log(newArr);
 
-Array.prototype.myMap = function (callback) {
+Array.prototype.myFilter = function (callback) {
   let result = [],
     thisObj = this;
-
   for (let i = 0; i <= thisObj.length - 1; i++) {
-    result.push(callback(thisObj[i]));
+    if (callback(thisObj[i])) result.push(thisObj[i]);
   }
   return result;
 };
 
-const result = nums.myMap(function (item) {
-  return item * 3;
+const result = nums.myFilter(function (item) {
+  return item > 3;
 });
+
 console.log(result);
