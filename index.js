@@ -1,19 +1,23 @@
-const nums = [1, 2, 3, 4, 5, 6];
+const nums = [1, 2, 3, 4];
 
-const newArr = nums.filter((item) => item > 3);
-console.log(newArr);
+const sum = nums.reduce((cur, acc) => {
+  return (acc = acc + cur);
+}, 0);
 
-Array.prototype.myFilter = function (callback) {
-  let result = [],
-    thisObj = this;
-  for (let i = 0; i <= thisObj.length - 1; i++) {
-    if (callback(thisObj[i])) result.push(thisObj[i]);
+console.log(sum);
+
+Array.prototype.myReduce = function (callback, initialValue) {
+  let acc = initialValue !== undefined ? initialValue : this[0];
+
+  for (let i = 0; i < this.length; i++) {
+    acc = callback(acc, this[i]);
   }
-  return result;
+
+  return acc;
 };
 
-const result = nums.myFilter(function (item) {
-  return item > 3;
-});
+const result = nums.myReduce(function (acc, cur) {
+  return (acc = acc + cur);
+}, 0);
 
 console.log(result);
