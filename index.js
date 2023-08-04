@@ -1,14 +1,17 @@
 const nums = [1, 2, 3, 4, 5, 6];
 
-nums.forEach((item) => console.log(item));
+const newArr = nums.map((item) => 2 * item);
+console.log(newArr);
 
-Array.prototype.myForEach = function (callback) {
-  let thisObj = this;
+Array.prototype.myMap = function (callback) {
+  let result = [],
+    thisObj = this;
+
   for (let i = 0; i <= thisObj.length - 1; i++) {
-    callback(thisObj[i]);
+    result.push(callback(thisObj[i]));
   }
+  return result;
 };
 
-nums.myForEach(function (item) {
-  console.log(item);
-});
+const result = nums.myMap((item) => item * 3);
+console.log(result);
