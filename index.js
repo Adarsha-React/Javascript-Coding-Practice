@@ -1,5 +1,5 @@
-const nums = [1, 4, 5, 8, 3, 9, 10, 13, 15, 11];
-const target = 11;
+const nums = [1, 4, 5, 8, 3, 9];
+const target = 9;
 
 const linearSearch = (nums, target) => {
   let steps = 0;
