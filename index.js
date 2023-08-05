@@ -1,23 +1,21 @@
-const nums = [1, 2, 3, 4];
+const nums = [1, 4, 5, 8, 3, 9, 10, 13, 15, 11];
+const target = 11;
 
-const sum = nums.reduce((cur, acc) => {
-  return (acc = acc + cur);
-}, 0);
-
-console.log(sum);
-
-Array.prototype.myReduce = function (callback, initialValue) {
-  let acc = initialValue !== undefined ? initialValue : this[0];
-
-  for (let i = 0; i < this.length; i++) {
-    acc = callback(acc, this[i]);
+const linearSearch = (nums, target) => {
+  let steps = 0;
+  for (let i = 0; i < nums.length; i++) {
+    steps++;
+    if (nums[i] === target) {
+      console.log("Number of steps taken by Linear Search O(n): " + steps);
+      return i;
+    }
   }
-
-  return acc;
+  return -1;
 };
 
-const result = nums.myReduce(function (acc, cur) {
-  return (acc = acc + cur);
-}, 0);
-
-console.log(result);
+let result = linearSearch(nums, target);
+if (result === -1) {
+  console.log("Target not found");
+} else {
+  console.log(`Target found at position :  ${result} `);
+}
