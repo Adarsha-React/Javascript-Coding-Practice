@@ -8,14 +8,9 @@ const binarySearch = (nums, target) => {
 
   while (start <= end) {
     steps++;
-    let mid = Math.round((start + end) / 2);
-    if (nums[mid] === target) {
-      console.log("Number of steps taken by Binary Search O(log n) : " + steps);
-      return mid;
-    } else if (nums[mid] < target) {
-      start = mid + 1;
-    } else {
-      end = mid - 1;
+    if (nums[i] === target) {
+      console.log("Number of steps taken by Linear Search O(n): " + steps);
+      return i;
     }
   }
   return -1;
