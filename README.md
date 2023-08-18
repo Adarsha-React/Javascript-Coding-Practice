@@ -130,3 +130,14 @@ It won't reset the time like de-bouncing, it keeps running just like clock.
 We can add some alarm to alert for every 5 or 10 minutes. It can tell us the exact time (state in JS) on each alarm.
 
 In Javascript also, this is only called throttling - we might execute a function which should run on every 5 or 10 seconds regardless of what has happened in between. It will consider the state of the variable or any events whatever was there while finishing the giving time.
+
+In JavaScript, the value of this inside a regular function depends on how the function is called:
+
+If a function is called as a method of an object (like in the data.greet()), this will refer to the object that the method belongs to (data in this case).
+
+If a function is called without an explicit context (i.e., as a standalone function or inside a callback function like in setTimeout), this will refer to the global object (window in a browser) or be undefined in strict mode.
+
+However, if you had used the arrow function in the setTimeout callback, it would have consoled "hello Ajay Ravi" as expected. Why?
+Because arrow functions do not have their own this. The value of "this" inside an arrow function remains the same throughout the lifecycle of the function and is always bound to the value of "this" in the closest non-arrow parent function.
+The behavior of this inside of an arrow function differs from the regular function's this behavior. The arrow function doesn't define its own execution context but resolves to the one from the outer function.
+No matter how or where being executed, this value inside of an arrow function always equals this value from the outer function. In other words, the arrow function resolves this lexically.

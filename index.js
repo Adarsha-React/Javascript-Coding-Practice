@@ -1,24 +1,15 @@
-const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
-const target = 16;
+console.log("Start");
 
-const binarySearch = (nums, target) => {
-  let steps = 0,
-    start = 0,
-    end = nums.length - 1;
+try {
+  console.log("Inside try block - first line");
 
-  while (start <= end) {
-    steps++;
-    if (nums[i] === target) {
-      console.log("Number of steps taken by Linear Search O(n): " + steps);
-      return i;
-    }
-  }
-  return -1;
-};
+  someFunction();
 
-let result = binarySearch(nums, target);
-if (result === -1) {
-  console.log("Target not found");
-} else {
-  console.log(`Target found at position :  ${result} `);
+  console.log("Inside try block - last line");
+} catch (error) {
+  console.log(error.message);
+} finally {
+  console.log("Finally block, runs whatever it is");
 }
+
+console.log("End");
