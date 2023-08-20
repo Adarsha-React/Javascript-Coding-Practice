@@ -1,24 +1,24 @@
-console.log("Start");
+//Two point sum = 0
+const numbers = [-6, -3, 1, 2, 3, 4, 5, 7];
 
-const user = {
-  name: "Adarsha",
-  age: 31,
+const twoPointSum = (numbers) => {
+  //Initialize two pointers
+  let start = 0,
+    end = numbers.length - 1,
+    sum = 0;
+
+  while (start < end) {
+    sum = numbers[start] + numbers[end];
+    if (sum === 0) {
+      console.log(`Indices are - ${start} and ${end}`);
+      break;
+    } else if (sum < 0) {
+      start++;
+    } else {
+      end--;
+    }
+  }
+  return null; // if no pair found
 };
 
-const jsonData = JSON.stringify(user);
-console.log(jsonData);
-
-localStorage.setItem("user1", jsonData);
-localStorage.setItem("user2", jsonData);
-
-localStorage.setItem("user3", jsonData);
-localStorage.setItem("user4", jsonData);
-
-const userFromLS = JSON.parse(localStorage.getItem("user1"));
-console.log(userFromLS);
-
-console.log(localStorage);
-
-for (let i = 0; i < localStorage.length; i++) {
-  console.log(localStorage.key(i));
-}
+twoPointSum(numbers); //output - Indices are - 1 and 4
