@@ -1,15 +1,19 @@
+let counter = 0;
 const getData = () => {
-  console.log("Fetching the data");
+  console.log("Fecthing data..." + Date());
 };
 
 const debounce = (getData, delay) => {
-  let timer;
+  let flag = true;
   return function () {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      getData();
-    }, delay);
+    if (flag) {
+      getData.call();
+      flag = false;
+      setTimeout(() => {
+        flag = true;
+      }, delay);
+    }
   };
 };
 
-const betterFunction = debounce(getData, 1000);
+const betterFunction = debounce(getData, 2000);
