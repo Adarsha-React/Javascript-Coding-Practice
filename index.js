@@ -1,18 +1,11 @@
 const nums = [3, 5, 7, 9, 11, 13];
 
-const result = nums.filter((item) => item > 9);
-console.log(result);
+nums.forEach((item) => console.log(item));
 
-Array.prototype.myFilter = function (callBack) {
-  let context = this,
-    result = [];
+Array.prototype.myForEach = function (callBack) {
+  let context = this;
   for (let i = 0; i < context.length; i++) {
-    if (callBack(context[i])) {
-      result.push(context[i]);
-    }
+    callBack(context[i]);
   }
-  return result;
 };
-
-const newResult = nums.myFilter((item) => item > 9);
-console.log(newResult);
+nums.myForEach((item) => console.log(item));
