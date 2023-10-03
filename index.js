@@ -1,22 +1,41 @@
-const nums = [3, 10, 4, 10];
+const cart = ["pants", "shirts"];
 
-const result = nums.reduce((acc, cur) => {
-  return (acc = acc + cur);
-});
+createOrder(cart)
+  .then((orderId) => {
+    console.log(orderId);
+    return orderId;
+  })
+  .then((orderId) => {
+    return proceedToPayment(orderId);
+  })
+  .then((result) => {
+    console.log(result);
+  });
 
-console.log(result);
+function createOrder(cart) {
+  const promise = new Promise((resolve, reject) => {
+    if (validateInfo(cart)) {
+      setTimeout(() => {
+        const orderId = Math.floor(Math.random() * 900000);
+        resolve(orderId);
+      }, 2000);
+    } else {
+      const error = new Error("cart is not valid");
+      reject(error);
+    }
+  });
 
-Array.prototype.myReduce = function (callback, initialVal) {
-  let acc = initialVal,
-    context = this;
-  for (let i = 0; i < context.length; i++) {
-    acc = acc ? callback(acc, context[i], i, context) : context[0];
+  return promise;
+}
+
+function proceedToPayment(orderId) {
+  return new Promise((resolve, reject) => {
+    resolve("Payment successful!!");
+  });
+}
+
+function validateInfo(cart) {
+  if (cart) {
+    return true;
   }
-  return acc;
-};
-
-const newResult = nums.myReduce((acc, cur) => {
-  return (acc = acc + cur);
-}, 0);
-
-console.log(newResult);
+}
