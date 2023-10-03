@@ -1,18 +1,22 @@
 let count = 1;
 function getData() {
-  console.log("Fecthing the data...", count++);
+  console.log("Fecthing the data...", new Date());
 }
 
 function debounce(getData, delay) {
   let context = this,
     args = arguments,
-    timer;
+    flag = true;
+
   return function () {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      getData.call(context, args);
-    }, delay);
+    if (flag) {
+      flag = false;
+      setTimeout(() => {
+        getData.call(context, args);
+        flag = true;
+      }, delay);
+    }
   };
 }
 
-const betterFunction = debounce(getData, 500);
+const betterFunction = debounce(getData, 1000);
