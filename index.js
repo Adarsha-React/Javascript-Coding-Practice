@@ -1,22 +1,19 @@
-let count = 1;
-function getData() {
-  console.log("Fecthing the data...", new Date());
-}
+const nums = [3, 5, 7, 9, 11, 13];
 
-function debounce(getData, delay) {
-  let context = this,
-    args = arguments,
-    flag = true;
+const result = nums.map((item) => item * 2);
+console.log(result);
 
-  return function () {
-    if (flag) {
-      flag = false;
-      setTimeout(() => {
-        getData.call(context, args);
-        flag = true;
-      }, delay);
-    }
-  };
-}
+Array.prototype.myMap = function (callBack) {
+  let context = this;
+  let result = [];
+  console.log(callBack);
+  for (let i = 0; i < context.length; i++) {
+    result.push(callBack(context[i]));
+  }
+  return result;
+};
 
-const betterFunction = debounce(getData, 1000);
+const newResult = nums.myMap(function (item) {
+  return item * 3;
+});
+console.log(newResult);
