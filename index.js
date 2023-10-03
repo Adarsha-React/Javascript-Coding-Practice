@@ -1,11 +1,22 @@
-const nums = [3, 5, 7, 9, 11, 13];
+const nums = [3, 10, 4, 10];
 
-nums.forEach((item) => console.log(item));
+const result = nums.reduce((acc, cur) => {
+  return (acc = acc + cur);
+});
 
-Array.prototype.myForEach = function (callBack) {
-  let context = this;
+console.log(result);
+
+Array.prototype.myReduce = function (callback, initialVal) {
+  let acc = initialVal,
+    context = this;
   for (let i = 0; i < context.length; i++) {
-    callBack(context[i]);
+    acc = acc ? callback(acc, context[i], i, context) : context[0];
   }
+  return acc;
 };
-nums.myForEach((item) => console.log(item));
+
+const newResult = nums.myReduce((acc, cur) => {
+  return (acc = acc + cur);
+}, 0);
+
+console.log(newResult);
