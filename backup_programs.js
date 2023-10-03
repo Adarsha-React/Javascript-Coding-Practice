@@ -408,3 +408,105 @@ const arr = [4, 100, 4, 7, 5, 3, 8];
 
 // const newValues = values.myMap((item) => item * 2);
 // console.log(newValues);
+
+// let counter = 0;
+// const getData = () => {
+//   console.log("Fecthing data..." + Date());
+// };
+
+// const debounce = (getData, delay) => {
+//   let flag = true;
+//   return function () {
+//     if (flag) {
+//       getData.call();
+//       flag = false;
+//       setTimeout(() => {
+//         flag = true;
+//       }, delay);
+//     }
+//   };
+// };
+
+// const betterFunction = debounce(getData, 2000);
+
+// const mapOfString = (str) => {
+//   const map = {};
+//   str.split("").forEach((item) => (map[item] = map[item] ? map[item] + 1 : 1));
+//   return map;
+// };
+
+// const checkPalindrome = (str1, str2) => {
+//   const mapOfString1 = mapOfString(str1);
+//   const mapOfString2 = mapOfString(str2);
+//   console.log(
+//     Object.keys(mapOfString1).length,
+//     Object.keys(mapOfString2).length
+//   );
+
+//   if (Object.keys(mapOfString1).length !== Object.keys(mapOfString2).length) {
+//     return false;
+//   }
+
+//   for (let key in mapOfString1) {
+//     if (mapOfString1[key] !== mapOfString2[key]) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// };
+
+// console.log(checkPalindrome("hel", "hel"));
+
+// =====
+
+// const mapOfString = (str) => {
+//   let map = {};
+//   str
+//     .split("")
+//     .filter((item) => item !== " ")
+//     .forEach((item) => (map[item] = map[item] ? map[item] + 1 : 1));
+//   return map;
+// };
+
+// const mapObj = mapOfString("hell");
+// console.log(mapObj);
+// let max = 1,
+//   char = "";
+
+// for (let key in mapObj) {
+//   if (mapObj[key] > max) {
+//     max = mapObj[key];
+//     char = key;
+//   }
+// }
+
+// console.log(`${char}: ${max}`);
+
+//===
+
+const lengthOfLongestString = (str) => {
+  if (!str) {
+    return false;
+  }
+
+  let start = 0,
+    end = 0,
+    maxLength = 0;
+
+  let uniqueCharacters = new Set();
+
+  while (end < str.length) {
+    if (!uniqueCharacters.has(str[end])) {
+      uniqueCharacters.add(str[end]);
+      end++;
+      maxLength = Math.max(maxLength, uniqueCharacters.size);
+    } else {
+      uniqueCharacters.delete(str[end]);
+      start++;
+    }
+  }
+  return maxLength;
+};
+
+console.log(lengthOfLongestString("abcabcbb"));

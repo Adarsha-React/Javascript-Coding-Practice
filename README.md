@@ -73,4 +73,33 @@ return a;
 };
 }
 
-console.log(sum(1)(10)());
+# console.log(sum(1)(10)());
+
+const mapOfString = (str) => {
+const map = {};
+str.split("").forEach((item) => (map[item] = map[item] ? map[item] + 1 : 1));
+return map;
+};
+
+const checkPalindrome = (str1, str2) => {
+const mapOfString1 = mapOfString(str1);
+const mapOfString2 = mapOfString(str2);
+console.log(
+Object.keys(mapOfString1).length,
+Object.keys(mapOfString2).length
+);
+
+if (Object.keys(mapOfString1).length !== Object.keys(mapOfString2).length) {
+return false;
+}
+
+for (let key in mapOfString1) {
+if (mapOfString1[key] !== mapOfString2[key]) {
+return false;
+}
+}
+
+return true;
+};
+
+console.log(checkPalindrome("hel", "hel"));
