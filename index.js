@@ -1,17 +1,23 @@
-const nums = [10, 9, 2, 20, 30];
+const nums = [10, 9, 2, 20, , 20, 30];
 
-// nums.sort((a, b) => a - b);
-// console.log(nums[nums.length - 1]);
+function findCount(nums) {
+  let map = {};
 
-function findMin(nums) {
-  let minimum = nums[0];
-  for (let i = 1; i <= nums.length; i++) {
-    if (nums[i] > minimum) {
-      minimum = nums[i];
+  let minimum = 0,
+    keyValue = 0;
+
+  nums.filter((item) => (map[item] = map[item] ? map[item] + 1 : 1));
+  console.log(map);
+
+  for (let key in map) {
+    if (map[key] > minimum) {
+      minimum = map[key];
+      keyValue = key;
     }
   }
-
-  return minimum;
+  return [minimum, keyValue];
 }
 
-console.log(findMin(nums));
+const result = findCount(nums);
+
+console.log(result);
