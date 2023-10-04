@@ -1,27 +1,21 @@
-const nums = [4, 6, 10, 20, 50, 70];
-console.log(nums);
+function duplicateCountCheck(str) {
+  const mapOfStr = {};
+  str
+    .split("")
+    .forEach(
+      (item) => (mapOfStr[item] = mapOfStr[item] ? mapOfStr[item] + 1 : 1)
+    );
 
-function binarySearch(nums, target) {
-  let left = 0,
-    right = nums.length,
-    mid = 0;
-
-  console.log(right);
-
-  while (left <= right) {
-    mid = (left + right) / 2;
-
-    if (nums[mid] === target) {
-      return mid;
-    } else if (nums[mid] < target) {
-      left = mid + 1;
-    } else {
-      right = mid - 1;
+  let max = 0;
+  let result = [];
+  for (let key in mapOfStr) {
+    if (mapOfStr[key] >= max) {
+      max = mapOfStr[key];
+      result.push({ max, key });
     }
   }
-
-  return -1;
+  console.log(mapOfStr);
+  console.log(result);
 }
 
-const result = binarySearch(nums, 50);
-console.log(result);
+duplicateCountCheck("hlloehsghelows");
