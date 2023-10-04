@@ -1,21 +1,17 @@
-function duplicateCountCheck(str) {
-  const mapOfStr = {};
-  str
-    .split("")
-    .forEach(
-      (item) => (mapOfStr[item] = mapOfStr[item] ? mapOfStr[item] + 1 : 1)
-    );
+const nums = [10, 9, 2, 20, 30];
 
-  let max = 0;
-  let result = [];
-  for (let key in mapOfStr) {
-    if (mapOfStr[key] >= max) {
-      max = mapOfStr[key];
-      result.push({ max, key });
+// nums.sort((a, b) => a - b);
+// console.log(nums[nums.length - 1]);
+
+function findMin(nums) {
+  let minimum = nums[0];
+  for (let i = 1; i <= nums.length; i++) {
+    if (nums[i] > minimum) {
+      minimum = nums[i];
     }
   }
-  console.log(mapOfStr);
-  console.log(result);
+
+  return minimum;
 }
 
-duplicateCountCheck("hlloehsghelows");
+console.log(findMin(nums));
