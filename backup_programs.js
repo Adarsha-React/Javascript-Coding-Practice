@@ -485,28 +485,148 @@ const arr = [4, 100, 4, 7, 5, 3, 8];
 
 //===
 
-const lengthOfLongestString = (str) => {
-  if (!str) {
-    return false;
-  }
+// const lengthOfLongestString = (str) => {
+//   if (!str) {
+//     return false;
+//   }
 
-  let start = 0,
-    end = 0,
-    maxLength = 0;
+//   let start = 0,
+//     end = 0,
+//     maxLength = 0;
 
-  let uniqueCharacters = new Set();
+//   let uniqueCharacters = new Set();
 
-  while (end < str.length) {
-    if (!uniqueCharacters.has(str[end])) {
-      uniqueCharacters.add(str[end]);
-      end++;
-      maxLength = Math.max(maxLength, uniqueCharacters.size);
-    } else {
-      uniqueCharacters.delete(str[end]);
-      start++;
-    }
-  }
-  return maxLength;
-};
+//   while (end < str.length) {
+//     if (!uniqueCharacters.has(str[end])) {
+//       uniqueCharacters.add(str[end]);
+//       end++;
+//       maxLength = Math.max(maxLength, uniqueCharacters.size);
+//     } else {
+//       uniqueCharacters.delete(str[end]);
+//       start++;
+//     }
+//   }
+//   return maxLength;
+// };
 
-console.log(lengthOfLongestString("abcabcbb"));
+// console.log(lengthOfLongestString("abcabcbb"));
+
+//Promise and Async await
+
+// const pr = new Promise(function (resolve, reject) {
+//   setTimeout(() => {
+//     resolve("Promise 1 resolved");
+//   }, 3000);
+
+//   console.log("Inside promise");
+// });
+
+// pr.then(function (respose) {
+//   console.log(respose);
+// }).catch(function (err) {
+//   console.log();
+// });
+
+// function printNumbers() {
+//   for (let i = 0; i < 10; i++) {
+//     console.log(i);
+//   }
+// }
+
+// printNumbers();
+
+// const pr2 = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve("Promise 2 resovled");
+//   }, 3000);
+// });
+
+// async function handlePromise() {
+//   const data = await pr2;
+//   console.log(data);
+//   console.log("Inside promise 2");
+// }
+
+// handlePromise();
+
+// function printNumbers() {
+//   for (let i = 0; i < 10; i++) {
+//     console.log(i);
+//   }
+// }
+
+// printNumbers();
+
+//Fibonacci
+
+// const fib = (n) => {
+//   const result = [];
+//   for (let i = 0; i <= n; i++) {
+//     if (i <= 1) {
+//       result.push(i);
+//     } else {
+//       result.push(result[i - 2] + result[i - 1]);
+//     }
+//   }
+//   return result;
+// };
+
+// console.log(fib(6));
+
+//print the numbers without using any loo
+// const print = (num) => {
+//   console.log("Current...", num);
+//   if (num === 0) return;
+//   print(num - 1);
+//   console.log(num);
+// };
+
+// print(5);
+
+// var cars = {
+//   label: "Autos",
+//   subs: [
+//     {
+//       label: "SUVs",
+//       subs: [],
+//     },
+//     {
+//       label: "Trucks",
+//       subs: [
+//         {
+//           label: "2 Wheel Drive",
+//           subs: [],
+//         },
+//         {
+//           label: "4 Wheel Drive",
+//           subs: [
+//             {
+//               label: "Ford",
+//               subs: [],
+//             },
+//             {
+//               label: "Chevrolet",
+//               subs: [],
+//             },
+//           ],
+//         },
+//       ],
+//     },
+//     {
+//       label: "Sedan",
+//       subs: [],
+//     },
+//   ],
+// };
+
+// const iterateObject = (obj) => {
+//   for (let key in obj) {
+//     if (typeof obj[key] === "object" && obj[key] !== null) {
+//       iterateObject(obj[key]);
+//     } else {
+//       console.log(key + " : " + obj[key]);
+//     }
+//   }
+// };
+
+// iterateObject(cars);

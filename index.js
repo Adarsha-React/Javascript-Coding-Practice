@@ -1,23 +1,18 @@
-const nums = [10, 9, 2, 20, , 20, 30];
+const nums = [3, 4, 20, 6, 7, 2, 12, 8];
 
-function findCount(nums) {
-  let map = {};
+function secLargest(nums) {
+  let largest = nums[0];
+  let secondLargest = -Infinity;
 
-  let minimum = 0,
-    keyValue = 0;
-
-  nums.filter((item) => (map[item] = map[item] ? map[item] + 1 : 1));
-  console.log(map);
-
-  for (let key in map) {
-    if (map[key] > minimum) {
-      minimum = map[key];
-      keyValue = key;
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > largest) {
+      secondLargest = largest;
+      largest = nums[i];
+    } else if (nums[i] < largest && nums[i] > secondLargest) {
+      secondLargest = nums[i];
     }
   }
-  return [minimum, keyValue];
+  return secondLargest;
 }
 
-const result = findCount(nums);
-
-console.log(result);
+console.log(secLargest(nums));
